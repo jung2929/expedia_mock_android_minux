@@ -1,18 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/tablayout">
 
-</android.support.constraint.ConstraintLayout>
+        <FrameLayout
+            android:id="@+id/tab_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <FrameLayout
+                android:id="@+id/tab1_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="visible">
+
+                <RelativeLayout
+                    android:id="@+id/logo_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:background="@color/colorAppTheme">
+
+                    <ImageView
+                        android:id="@+id/expedia_logo_iv"
+                        android:layout_width="160dp"
+                        android:layout_height="130dp"
+                        android:layout_centerHorizontal="true"
+                        app:srcCompat="@drawable/expedia_logo" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/btn_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="115dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/border01"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="65dp"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_height="65dp"
+                            android:layout_weight="1"
+                            android:padding="3dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/hotel" />
+
+                        <ImageButton
+                            android:layout_width="0dp"
+                            android:layout_height="65dp"
+                            android:layout_weight="1"
+                            android:padding="3dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/airplane" />
+                    </LinearLayout>
+
+                    <ImageButton
+                        android:layout_width="match_parent"
+                        android:layout_height="65dp"
+                        android:padding="3dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/both" />
+                </LinearLayout>
+            </FrameLayout>
+
+            <LinearLayout
+                android:id="@+id/tab2_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="invisible">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="TAB2"
+                    android:textSize="30dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/tab3_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="invisible">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="TAB3"/>
+            </LinearLayout>
+        </FrameLayout>
+    </ScrollView>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+    </android.support.design.widget.TabLayout>
+
+</RelativeLayout>

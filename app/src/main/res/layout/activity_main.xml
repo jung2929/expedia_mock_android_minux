@@ -83,7 +83,7 @@
 
                         <ImageButton
                             android:id="@+id/bookingtab_both_btn"
-                            android:layout_width="320dp"
+                            android:layout_width="350dp"
                             android:layout_height="70dp"
                             android:scaleType="fitXY"
                             android:layout_marginLeft="3dp"

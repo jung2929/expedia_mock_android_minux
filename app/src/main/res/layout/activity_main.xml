@@ -10,21 +10,22 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/tablayout">
+        android:layout_above="@+id/main_tablayout">
 
         <FrameLayout
-            android:id="@+id/tab_container"
+            android:id="@+id/main_tab_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <RelativeLayout
-                android:id="@+id/tab1_content"
+                android:id="@+id/main_booking_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="visible">
+                android:visibility="visible"
+                android:background="#000">
 
                 <FrameLayout
-                    android:id="@+id/tab1_head"
+                    android:id="@+id/bookingtab_head"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
@@ -43,9 +44,9 @@
                     </RelativeLayout>
 
                     <LinearLayout
-                        android:id="@+id/btn_layout"
+                        android:id="@+id/bookingtab_btn_layout"
                         android:layout_width="match_parent"
-                        android:layout_height="130dp"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginLeft="15dp"
                         android:layout_marginTop="115dp"
@@ -55,50 +56,57 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="65dp"
+                            android:layout_height="70dp"
                             android:orientation="horizontal"
                             android:weightSum="2">
 
                             <ImageButton
+                                android:id="@+id/bookingtab_hotel_btn"
                                 android:layout_width="0dp"
-                                android:layout_height="65dp"
+                                android:layout_height="60dp"
                                 android:layout_weight="1"
-                                android:padding="3dp"
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/hotel" />
+                                android:scaleType="fitEnd"
+                                android:layout_marginLeft="2dp"
+                                android:src="@drawable/hotel"
+                                android:background="@drawable/border01"/>
 
                             <ImageButton
+                                android:id="@+id/bookingtab_airplane_btn"
                                 android:layout_width="0dp"
-                                android:layout_height="65dp"
+                                android:layout_height="60dp"
                                 android:layout_weight="1"
-                                android:padding="3dp"
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/airplane" />
+                                android:scaleType="fitStart"
+                                android:layout_marginRight="2dp"
+                                android:src="@drawable/airplane"
+                                android:background="@drawable/border01"/>
                         </LinearLayout>
 
                         <ImageButton
-                            android:layout_width="match_parent"
-                            android:layout_height="65dp"
-                            android:padding="3dp"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/both" />
+                            android:id="@+id/bookingtab_both_btn"
+                            android:layout_width="320dp"
+                            android:layout_height="70dp"
+                            android:scaleType="fitXY"
+                            android:layout_marginLeft="3dp"
+                            android:layout_marginRight="3dp"
+                            android:src="@drawable/both"
+                            android:background="@drawable/border01"/>
                     </LinearLayout>
                 </FrameLayout>
 
                 <LinearLayout
-                    android:id="@+id/tab1_body"
+                    android:id="@+id/bookingtab_body"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/tab1_head"
+                    android:layout_below="@+id/bookingtab_head"
                     android:layout_marginLeft="15dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="30dp"
                     android:layout_marginRight="15dp"
                     android:background="@drawable/border01"
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
                         android:layout_gravity="center_horizontal"
                         android:src="@drawable/login_icon" />
 
@@ -115,7 +123,7 @@
                             android:gravity="end"
                             android:text="Expedia "
                             android:textColor="@color/colorAppTheme"
-                            android:textSize="30sp"
+                            android:textSize="24sp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -124,7 +132,7 @@
                             android:layout_weight="1.8"
                             android:text="회원으로 에약!"
                             android:textColor="@color/colorAppTheme"
-                            android:textSize="30sp" />
+                            android:textSize="24sp" />
                     </LinearLayout>
 
                     <TextView
@@ -133,24 +141,24 @@
                         android:layout_gravity="center_horizontal"
                         android:gravity="center"
                         android:text="지금 바로 엄선된 호텔을 추가 할인받으실 수 있어요."
-                        android:textSize="27sp" />
+                        android:textSize="18sp" />
 
                     <Button
-                        android:id="@+id/login_join_btn"
+                        android:id="@+id/bookingtab_signup_btn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="#FFF"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/border01"
                         android:text="로그인 또는 회원가입"
                         android:textColor="#0E4FEE"
-                        android:textSize="35dp"
-                        android:layout_marginTop="5dp"/>
+                        android:textSize="24dp" />
 
 
                 </LinearLayout>
             </RelativeLayout>
 
             <LinearLayout
-                android:id="@+id/tab2_content"
+                android:id="@+id/main_schedule_content"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:visibility="invisible">
@@ -163,7 +171,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/tab3_content"
+                android:id="@+id/main_account_content"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:visibility="invisible">
@@ -177,7 +185,7 @@
     </ScrollView>
 
     <android.support.design.widget.TabLayout
-        android:id="@+id/tablayout"
+        android:id="@+id/main_tablayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

@@ -17,79 +17,149 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <FrameLayout
+            <RelativeLayout
                 android:id="@+id/tab1_content"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:visibility="visible">
 
-                <RelativeLayout
-                    android:id="@+id/logo_layout"
+                <FrameLayout
+                    android:id="@+id/tab1_head"
                     android:layout_width="match_parent"
-                    android:layout_height="180dp"
-                    android:background="@color/colorAppTheme">
+                    android:layout_height="match_parent">
 
-                    <ImageView
-                        android:id="@+id/expedia_logo_iv"
-                        android:layout_width="160dp"
+                    <RelativeLayout
+                        android:id="@+id/logo_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        android:background="@color/colorAppTheme">
+
+                        <ImageView
+                            android:id="@+id/expedia_logo_iv"
+                            android:layout_width="160dp"
+                            android:layout_height="130dp"
+                            android:layout_centerHorizontal="true"
+                            app:srcCompat="@drawable/expedia_logo" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/btn_layout"
+                        android:layout_width="match_parent"
                         android:layout_height="130dp"
-                        android:layout_centerHorizontal="true"
-                        app:srcCompat="@drawable/expedia_logo" />
-                </RelativeLayout>
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="115dp"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/border01"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="65dp"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+                            <ImageButton
+                                android:layout_width="0dp"
+                                android:layout_height="65dp"
+                                android:layout_weight="1"
+                                android:padding="3dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/hotel" />
+
+                            <ImageButton
+                                android:layout_width="0dp"
+                                android:layout_height="65dp"
+                                android:layout_weight="1"
+                                android:padding="3dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/airplane" />
+                        </LinearLayout>
+
+                        <ImageButton
+                            android:layout_width="match_parent"
+                            android:layout_height="65dp"
+                            android:padding="3dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/both" />
+                    </LinearLayout>
+                </FrameLayout>
 
                 <LinearLayout
-                    android:id="@+id/btn_layout"
+                    android:id="@+id/tab1_body"
                     android:layout_width="match_parent"
-                    android:layout_height="130dp"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tab1_head"
                     android:layout_marginLeft="15dp"
-                    android:layout_marginTop="115dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginRight="15dp"
                     android:background="@drawable/border01"
                     android:orientation="vertical">
 
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/login_icon" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="65dp"
+                        android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:weightSum="2">
+                        android:weightSum="3">
 
-                        <ImageButton
+                        <TextView
                             android:layout_width="0dp"
-                            android:layout_height="65dp"
-                            android:layout_weight="1"
-                            android:padding="3dp"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/hotel" />
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.2"
+                            android:gravity="end"
+                            android:text="Expedia "
+                            android:textColor="@color/colorAppTheme"
+                            android:textSize="30sp"
+                            android:textStyle="bold" />
 
-                        <ImageButton
+                        <TextView
                             android:layout_width="0dp"
-                            android:layout_height="65dp"
-                            android:layout_weight="1"
-                            android:padding="3dp"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/airplane" />
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.8"
+                            android:text="회원으로 에약!"
+                            android:textColor="@color/colorAppTheme"
+                            android:textSize="30sp" />
                     </LinearLayout>
 
-                    <ImageButton
+                    <TextView
+                        android:layout_width="335dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center"
+                        android:text="지금 바로 엄선된 호텔을 추가 할인받으실 수 있어요."
+                        android:textSize="27sp" />
+
+                    <Button
+                        android:id="@+id/login_join_btn"
                         android:layout_width="match_parent"
-                        android:layout_height="65dp"
-                        android:padding="3dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/both" />
+                        android:layout_height="wrap_content"
+                        android:background="#FFF"
+                        android:text="로그인 또는 회원가입"
+                        android:textColor="#0E4FEE"
+                        android:textSize="35dp"
+                        android:layout_marginTop="5dp"/>
+
+
                 </LinearLayout>
-            </FrameLayout>
+            </RelativeLayout>
 
             <LinearLayout
                 android:id="@+id/tab2_content"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:visibility="invisible">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="TAB2"
-                    android:textSize="30dp"/>
+                    android:textSize="30dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -97,10 +167,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:visibility="invisible">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TAB3"/>
+                    android:text="TAB3" />
             </LinearLayout>
         </FrameLayout>
     </ScrollView>
@@ -109,7 +180,25 @@
         android:id="@+id/tablayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:background="#FFF"
+        app:tabIndicatorHeight="0dp"
+        app:tabSelectedTextColor="@color/colorAppTheme">
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/tarvel_booking_tab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/schedule_tab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/account_tab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </android.support.design.widget.TabLayout>
 
 </RelativeLayout>

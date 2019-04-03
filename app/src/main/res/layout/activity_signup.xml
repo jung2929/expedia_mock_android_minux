@@ -26,6 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="4"
+            android:background="#FFF"
             app:tabIndicatorColor="@color/colorAppTheme"
             app:tabSelectedTextColor="@color/colorAppTheme">
 
@@ -68,12 +69,14 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="150dp">
+                android:layout_height="100dp"
+                android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="구글 페이스북 로고버튼" />
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="페이브북, 구글 "/>
+
             </LinearLayout>
 
             <TextView

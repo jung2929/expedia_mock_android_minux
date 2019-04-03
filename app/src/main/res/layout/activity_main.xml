@@ -7,27 +7,31 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ScrollView
+
+    <FrameLayout
+        android:id="@+id/main_tab_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/main_tablayout">
+        android:layout_above="@+id/main_tablayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true">
 
-        <FrameLayout
-            android:id="@+id/main_tab_container"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:fillViewport="true">
 
-            <RelativeLayout
+            <LinearLayout
                 android:id="@+id/main_booking_content"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="visible"
-                android:background="#000">
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="visible">
 
                 <FrameLayout
                     android:id="@+id/bookingtab_head"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content">
 
                     <RelativeLayout
                         android:id="@+id/logo_layout"
@@ -51,45 +55,45 @@
                         android:layout_marginLeft="15dp"
                         android:layout_marginTop="115dp"
                         android:layout_marginRight="15dp"
-                        android:background="@drawable/border01"
+                        android:background="@drawable/round_all_border"
                         android:orientation="vertical">
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="70dp"
+                            android:layout_height="60dp"
                             android:orientation="horizontal"
                             android:weightSum="2">
 
-                            <ImageButton
+                            <Button
                                 android:id="@+id/bookingtab_hotel_btn"
                                 android:layout_width="0dp"
                                 android:layout_height="60dp"
                                 android:layout_weight="1"
-                                android:scaleType="fitEnd"
-                                android:layout_marginLeft="2dp"
-                                android:src="@drawable/hotel"
-                                android:background="@drawable/border01"/>
+                                android:background="@drawable/round_tl_border"
+                                android:text="호텔"
+                                android:textColor="@color/colorAppTheme"
+                                android:textSize="20dp" />
 
-                            <ImageButton
+                            <Button
                                 android:id="@+id/bookingtab_airplane_btn"
                                 android:layout_width="0dp"
                                 android:layout_height="60dp"
                                 android:layout_weight="1"
-                                android:scaleType="fitStart"
-                                android:layout_marginRight="2dp"
-                                android:src="@drawable/airplane"
-                                android:background="@drawable/border01"/>
+                                android:background="@drawable/round_tr_border"
+                                android:text="항공"
+                                android:textColor="@color/colorAppTheme"
+                                android:textSize="20dp" />
                         </LinearLayout>
 
-                        <ImageButton
+                        <Button
                             android:id="@+id/bookingtab_both_btn"
-                            android:layout_width="350dp"
-                            android:layout_height="70dp"
-                            android:scaleType="fitXY"
-                            android:layout_marginLeft="3dp"
-                            android:layout_marginRight="3dp"
-                            android:src="@drawable/both"
-                            android:background="@drawable/border01"/>
+                            style="?android:attr/borderlessButtonStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:background="@drawable/round_blr_border"
+                            android:text="호텔+항공"
+                            android:textColor="@color/colorAppTheme"
+                            android:textSize="20dp" />
                     </LinearLayout>
                 </FrameLayout>
 
@@ -97,11 +101,10 @@
                     android:id="@+id/bookingtab_body"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/bookingtab_head"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="30dp"
                     android:layout_marginRight="15dp"
-                    android:background="@drawable/border01"
+                    android:background="@drawable/round_all_border"
                     android:orientation="vertical">
 
                     <ImageView
@@ -123,7 +126,7 @@
                             android:gravity="end"
                             android:text="Expedia "
                             android:textColor="@color/colorAppTheme"
-                            android:textSize="24sp"
+                            android:textSize="20sp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -132,62 +135,262 @@
                             android:layout_weight="1.8"
                             android:text="회원으로 에약!"
                             android:textColor="@color/colorAppTheme"
-                            android:textSize="24sp" />
+                            android:textSize="18sp" />
                     </LinearLayout>
 
                     <TextView
                         android:layout_width="335dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
+                        android:layout_marginHorizontal="8dp"
                         android:gravity="center"
                         android:text="지금 바로 엄선된 호텔을 추가 할인받으실 수 있어요."
-                        android:textSize="18sp" />
+                        android:textSize="17sp" />
+
 
                     <Button
                         android:id="@+id/bookingtab_signup_btn"
+                        style="?android:attr/borderlessButtonStyle"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="60dp"
                         android:layout_marginTop="8dp"
-                        android:background="@drawable/border01"
+                        android:background="@drawable/round_blr_border"
                         android:text="로그인 또는 회원가입"
                         android:textColor="#0E4FEE"
-                        android:textSize="24dp" />
-
-
+                        android:textSize="20dp" />
                 </LinearLayout>
-            </RelativeLayout>
-
-            <LinearLayout
-                android:id="@+id/main_schedule_content"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:visibility="invisible">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TAB2"
-                    android:textSize="30dp" />
-            </LinearLayout>
+                    android:layout_margin="15dp"
+                    android:text="추천 여행지 및 상품"
+                    android:textColor="#000"
+                    android:textSize="20dp" />
 
-            <LinearLayout
-                android:id="@+id/main_account_content"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:visibility="invisible">
-
-                <TextView
+                <android.support.v7.widget.CardView
+                    android:id="@+id/bookingtab_shortsale_card"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="TAB3" />
+                    android:layout_height="250dp"
+                    android:layout_marginHorizontal="15dp"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="5dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/card_border">
+
+                        <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/bookingtab_card_iv01"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            app:riv_corner_radius="5dp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_margin="15dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="72시간 반짝 세일"
+                                android:textColor="#FFF"
+                                android:textSize="24dp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="일부 호텔을 20% 이상 할인해 드려요. 반짝 세일은 화요일에서 목요일까지만 진행됩니다."
+                                android:textColor="#FFF"
+                                android:textSize="16dp" />
+                        </LinearLayout>
+                    </RelativeLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/bookingtab_under80000sale_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginTop="15dp"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="5dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/card_border">
+
+                        <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/bookingtab_card_iv02"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            app:riv_corner_radius="5dp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_margin="15dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="￦80,000 이하 특가"
+                                android:textColor="#FFF"
+                                android:textSize="24dp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="호텔"
+                                android:textColor="#FFF"
+                                android:textSize="24dp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="호텔이 1박에 ￦80,000 이하!"
+                                android:textColor="#FFF"
+                                android:textSize="16dp" />
+                        </LinearLayout>
+                    </RelativeLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/bookingtab_dailyspecialprice_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginTop="15dp"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="5dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/card_border">
+
+                        <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/bookingtab_card_iv03"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            app:riv_corner_radius="5dp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_margin="15dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="일일 특가"
+                                android:textColor="#FFF"
+                                android:textSize="24dp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="매일 일부 호텔을 40%이상 할인해 드려요.매일 밤 자정 특가 상품이 업데이트 됩니다."
+                                android:textColor="#FFF"
+                                android:textSize="16dp" />
+                        </LinearLayout>
+                    </RelativeLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/bookingtab_deadlineproduct_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_margin="15dp"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="5dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/card_border">
+
+                        <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/bookingtab_card_iv04"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            app:riv_corner_radius="5dp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_margin="15dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_horizontal"
+                                android:text="마감특가 상품"
+                                android:textColor="#FFF"
+                                android:textSize="22dp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_horizontal"
+                                android:text="훌쩍 떠나고 싶으세요? 마감 특가 상품을 확인해 보세요."
+                                android:textColor="#FFF"
+                                android:textSize="16dp" />
+                        </LinearLayout>
+                    </RelativeLayout>
+                </android.support.v7.widget.CardView>
             </LinearLayout>
-        </FrameLayout>
-    </ScrollView>
+        </ScrollView>
+
+        <LinearLayout
+            android:id="@+id/main_schedule_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="invisible">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TAB2"
+                android:textSize="30dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/main_account_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="invisible">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TAB3" />
+        </LinearLayout>
+    </FrameLayout>
 
     <android.support.design.widget.TabLayout
         android:id="@+id/main_tablayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:background="#FFF"
         app:tabIndicatorHeight="0dp"

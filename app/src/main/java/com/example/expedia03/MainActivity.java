@@ -6,14 +6,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+
+import com.bumptech.glide.Glide;
 
 public class MainActivity extends AppCompatActivity {
     TabLayout tabLayout;
     TabLayout.Tab tab1, tab2, tab3;
     Button signupBtn;
+    ImageView cardIv01, cardIv02, cardIv03, cardIv04;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         signupBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent signupIntent = new Intent(MainActivity.this, SinupActivity.class);
+                Intent signupIntent = new Intent(MainActivity.this, SignupActivity.class);
                 startActivity(signupIntent);
             }
         });
@@ -68,10 +71,18 @@ public class MainActivity extends AppCompatActivity {
 
         //BookingTabContent
         signupBtn = findViewById(R.id.bookingtab_signup_btn);
+        cardIv01 = findViewById(R.id.bookingtab_card_iv01);
+        cardIv02 = findViewById(R.id.bookingtab_card_iv02);
+        cardIv03 = findViewById(R.id.bookingtab_card_iv03);
+        cardIv04 = findViewById(R.id.bookingtab_card_iv04);
+        Glide.with(this).load(R.drawable.card1_img).into(cardIv01);
+        Glide.with(this).load(R.drawable.card2_img).into(cardIv02);
+        Glide.with(this).load(R.drawable.card3_img).into(cardIv03);
+        Glide.with(this).load(R.drawable.card4_img).into(cardIv04);
     }
 
     private void changeTabContent(int pos){
-        RelativeLayout bookingContent = findViewById(R.id.main_booking_content);
+        LinearLayout bookingContent = findViewById(R.id.main_booking_content);
         LinearLayout scheduleContent = findViewById(R.id.main_schedule_content);
         LinearLayout accountContent = findViewById(R.id.main_account_content);
 

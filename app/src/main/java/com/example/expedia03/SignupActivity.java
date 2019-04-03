@@ -1,6 +1,5 @@
 package com.example.expedia03;
 
-
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -12,12 +11,13 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class SinupActivity extends AppCompatActivity {
+public class SignupActivity extends AppCompatActivity {
     TabLayout tabLayout;
     ImageButton backBtn;
     EditText emailAddressEt, passwordEt;
     Button loginBtn;
     TextView forgetPwdTv;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +67,7 @@ public class SinupActivity extends AppCompatActivity {
         passwordEt = findViewById(R.id.logintab_password_et);
         loginBtn = findViewById(R.id.logintab_login_btn);
         forgetPwdTv = findViewById(R.id.logintab_forget_pwd_tv);
+
     }
 
     private void changeTabContent(int pos){

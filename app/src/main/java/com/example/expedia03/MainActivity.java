@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -23,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout bookingContent;
     LinearLayout scheduleContent;
     LinearLayout accountContent;
+
+    CardView under80000Card;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,13 +58,21 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        /*signupBtn.setOnClickListener(new View.OnClickListener() {
+        signupBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent signupIntent = new Intent(MainActivity.this, SignupActivity.class);
-                startActivity(signupIntent);
+                Intent intent = new Intent(MainActivity.this, SignupActivity.class);
+                startActivity(intent);
             }
-        });*/
+        });
+        under80000Card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, HotelSaleActivity_under80000.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     private void initApp(){
@@ -96,6 +107,8 @@ public class MainActivity extends AppCompatActivity {
 
         bookingContent.addView(bookingtab_signupView, 1);
         signupBtn = findViewById(R.id.bookingtab_signup_btn);
+
+        under80000Card = findViewById(R.id.bookingtab_under80000sale_card);
 
         //ScheduleTab no Login - SignupView
         LinearLayout scheduletab_signupView = (LinearLayout)inflater.inflate(R.layout.scheduletab_signup_view, null);

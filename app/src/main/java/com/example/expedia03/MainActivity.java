@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
@@ -24,7 +25,8 @@ public class MainActivity extends AppCompatActivity {
 
     LinearLayout bookingContent;
     LinearLayout bookingtab_signupView;
-    Button signupBtn;
+    TextView bookingtab_pointGuideView;
+    Button bookingtab_signupBtn;
     ImageView cardIv01, cardIv02, cardIv03, cardIv04;
     CardView under80000Card, dailyCard, deadLineCard;
 
@@ -33,7 +35,12 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout scheduletab_schedulingView;
 
     LinearLayout accountContent;
+    LinearLayout accounttab_signupView;
+    LinearLayout accounttab_accountView;
+    Button accounttab_logoutBtn;
 
+
+    Boolean isLogin = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +53,27 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        if(isLogin){// Login
+            bookingtab_signupView.setVisibility(View.GONE);
+            bookingtab_pointGuideView.setVisibility(View.VISIBLE);
+
+            scheduletab_signupView.setVisibility(View.GONE);
+            scheduletab_schedulingView.setVisibility(View.VISIBLE);
+
+            accounttab_signupView.setVisibility(View.GONE);
+            accounttab_accountView.setVisibility(View.VISIBLE);
+            accounttab_logoutBtn.setVisibility(View.VISIBLE);
+        }else{//Logout
+            bookingtab_signupView.setVisibility(View.VISIBLE);
+            bookingtab_pointGuideView.setVisibility(View.GONE);
+
+            scheduletab_signupView.setVisibility(View.GONE);
+            scheduletab_schedulingView.setVisibility(View.VISIBLE);
+
+            accounttab_signupView.setVisibility(View.VISIBLE);
+            accounttab_accountView.setVisibility(View.GONE);
+            accounttab_logoutBtn.setVisibility(View.GONE);
+        }
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener(){
             @Override
             public void onTabSelected(TabLayout.Tab tab){
@@ -66,9 +94,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        signupBtn.setOnClickListener(new View.OnClickListener() {
+        bookingtab_signupBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                isLogin = true;
                 Intent intent = new Intent(MainActivity.this, SignupActivity.class);
                 startActivity(intent);
             }
@@ -95,6 +124,21 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, HotelSaleActivity.class);
                 intent.putExtra("pageset", HOTELSALE_DEADLINE);
                 startActivity(intent);
+            }
+        });
+        accounttab_logoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                isLogin = false;
+                bookingtab_signupView.setVisibility(View.VISIBLE);
+                bookingtab_pointGuideView.setVisibility(View.GONE);
+
+                scheduletab_signupView.setVisibility(View.GONE);
+                scheduletab_schedulingView.setVisibility(View.VISIBLE);
+
+                accounttab_signupView.setVisibility(View.VISIBLE);
+                accounttab_accountView.setVisibility(View.GONE);
+                accounttab_logoutBtn.setVisibility(View.GONE);
             }
         });
     }
@@ -128,15 +172,19 @@ public class MainActivity extends AppCompatActivity {
         Glide.with(this).load(R.drawable.card3_img).into(cardIv03);
         Glide.with(this).load(R.drawable.card4_img).into(cardIv04);
 
-        //BookingTab no Login - SignupView
+        //BookingTab Login/Logout - SignupView/PointGuideView
         bookingtab_signupView = findViewById(R.id.bookingtab_signup_view);
-        signupBtn = findViewById(R.id.bookingtab_signup_btn);
+        bookingtab_signupBtn = findViewById(R.id.bookingtab_signup_btn);
+        bookingtab_pointGuideView = findViewById(R.id.bookingtab_pointguide_tv);
 
-        //ScheduleTab no Login - SignupView
+        //ScheduleTab Login/Logout - SignupView/SchedulingView
         scheduletab_signupView = findViewById(R.id.scheduletab_signup_view);
         scheduletab_schedulingView = findViewById(R.id.scheduletab_scheduling_view);
-        scheduletab_signupView.setVisibility(View.VISIBLE);
-        scheduletab_schedulingView.setVisibility(View.GONE);
+
+        //AccountTab Login/Logout- SignupView/AccountView
+        accounttab_signupView = findViewById(R.id.accounttab_signup_view);
+        accounttab_accountView = findViewById(R.id.accounttab_account_view);
+        accounttab_logoutBtn = findViewById(R.id.accounttab_logout_btn);
     }
 
     private void changeTabContent(int pos){

@@ -157,6 +157,18 @@
                         android:textSize="20dp" />
                 </LinearLayout>
 
+                <TextView
+                    android:id="@+id/bookingtab_pointguide_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin = "15dp"
+                    android:text="앱에서는 모든 예약 시 포인트가 두 배로 적립됩니다!"
+                    android:textColor="#2F2870"
+                    android:textSize="14dp"
+                    android:gravity="center"
+                    android:background="@drawable/round_all_border"
+                    android:visibility="gone"/>
+
 
                 <TextView
                     android:layout_width="match_parent"
@@ -383,7 +395,7 @@
                     android:layout_height="200dp"
                     android:layout_margin="15dp"
                     android:orientation="vertical"
-                    android:visibility="gone">
+                    android:visibility="visible">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -883,6 +895,18 @@
                                 </LinearLayout>
                             </LinearLayout>
                         </LinearLayout>
+
+                        <Button
+                            android:id="@+id/accounttab_logout_btn"
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginHorizontal="15dp"
+                            android:background="@drawable/login_btn_border"
+                            android:text="로그아웃"
+                            android:textColor="#FFF"
+                            android:textSize="20dp"
+                            android:visibility="gone"/>
 
                         <ImageView
                             android:layout_width="200dp"

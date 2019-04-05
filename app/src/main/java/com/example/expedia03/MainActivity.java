@@ -9,23 +9,31 @@ import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.bumptech.glide.Glide;
 
 public class MainActivity extends AppCompatActivity {
+    static final int HOTELSALE_UNDER80000 = 15;
+    static final int HOTELSALE_DAILY = 16;
+    static final int HOTELSALE_DEADLINE = 17;
+
     TabLayout tabLayout;
     TabLayout.Tab tab1, tab2, tab3;
-    Button signupBtn;
-    ImageView cardIv01, cardIv02, cardIv03, cardIv04;
 
     LinearLayout bookingContent;
+    LinearLayout bookingtab_signupView;
+    Button signupBtn;
+    ImageView cardIv01, cardIv02, cardIv03, cardIv04;
+    CardView under80000Card, dailyCard, deadLineCard;
+
     LinearLayout scheduleContent;
+    LinearLayout scheduletab_signupView;
+    LinearLayout scheduletab_schedulingView;
+
     LinearLayout accountContent;
 
-    CardView under80000Card;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,11 +76,27 @@ public class MainActivity extends AppCompatActivity {
         under80000Card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, HotelSaleActivity_under80000.class);
+                Intent intent = new Intent(MainActivity.this, HotelSaleActivity.class);
+                intent.putExtra("pageset", HOTELSALE_UNDER80000);
                 startActivity(intent);
             }
         });
-
+        dailyCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, HotelSaleActivity.class);
+                intent.putExtra("pageset", HOTELSALE_DAILY);
+                startActivity(intent);
+            }
+        });
+        deadLineCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, HotelSaleActivity.class);
+                intent.putExtra("pageset", HOTELSALE_DEADLINE);
+                startActivity(intent);
+            }
+        });
     }
 
     private void initApp(){
@@ -92,6 +116,9 @@ public class MainActivity extends AppCompatActivity {
         accountContent = findViewById(R.id.main_account_content);
 
         //BookingTabContent
+        under80000Card = findViewById(R.id.bookingtab_under80000_card);
+        dailyCard = findViewById(R.id.bookingtab_dailys_card);
+        deadLineCard = findViewById(R.id.bookingtab_deadline_card);
         cardIv01 = findViewById(R.id.bookingtab_card_iv01);
         cardIv02 = findViewById(R.id.bookingtab_card_iv02);
         cardIv03 = findViewById(R.id.bookingtab_card_iv03);
@@ -102,39 +129,32 @@ public class MainActivity extends AppCompatActivity {
         Glide.with(this).load(R.drawable.card4_img).into(cardIv04);
 
         //BookingTab no Login - SignupView
-        LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        LinearLayout bookingtab_signupView = (LinearLayout)inflater.inflate(R.layout.bookingtab_signup_view, null);
-
-        bookingContent.addView(bookingtab_signupView, 1);
+        bookingtab_signupView = findViewById(R.id.bookingtab_signup_view);
         signupBtn = findViewById(R.id.bookingtab_signup_btn);
 
-        under80000Card = findViewById(R.id.bookingtab_under80000sale_card);
-
         //ScheduleTab no Login - SignupView
-        LinearLayout scheduletab_signupView = (LinearLayout)inflater.inflate(R.layout.scheduletab_signup_view, null);
-        LinearLayout scheduletab_schedulingView = (LinearLayout)inflater.inflate(R.layout.scheduletab_scheduling_view, null);
-        scheduleContent.addView(scheduletab_signupView, 1);
+        scheduletab_signupView = findViewById(R.id.scheduletab_signup_view);
+        scheduletab_schedulingView = findViewById(R.id.scheduletab_scheduling_view);
+        scheduletab_signupView.setVisibility(View.VISIBLE);
+        scheduletab_schedulingView.setVisibility(View.GONE);
     }
 
     private void changeTabContent(int pos){
         switch (pos){
             case 0:
                 bookingContent.setVisibility(View.VISIBLE);
-                scheduleContent.setVisibility(View.INVISIBLE);
-                accountContent.setVisibility(View.INVISIBLE);
+                scheduleContent.setVisibility(View.GONE);
+                accountContent.setVisibility(View.GONE);
                 break;
             case 1:
-                bookingContent.setVisibility(View.INVISIBLE);
+                bookingContent.setVisibility(View.GONE);
                 scheduleContent.setVisibility(View.VISIBLE);
-                accountContent.setVisibility(View.INVISIBLE);
+                accountContent.setVisibility(View.GONE);
                 break;
             case 2:
-                bookingContent.setVisibility(View.INVISIBLE);
-                scheduleContent.setVisibility(View.INVISIBLE);
+                bookingContent.setVisibility(View.GONE);
+                scheduleContent.setVisibility(View.GONE);
                 accountContent.setVisibility(View.VISIBLE);
-                /*tab1.setIcon(R.drawable.tab1_unselected);
-                tab2.setIcon(R.drawable.tab2_unselected);
-                tab3.setIcon(R.drawable.tab3_selected);*/
                 break;
         }
     }

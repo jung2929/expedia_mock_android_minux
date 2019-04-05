@@ -72,7 +72,7 @@
                     android:id="@+id/recyclerview_item_schedule"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="6.7"
+                    android:layout_weight="6.4"
                     android:textColor="#000"
                     android:textSize="16dp" />
 
@@ -88,7 +88,7 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.3"
+                    android:layout_weight="1.6"
                     android:text="(1박당)"
                     android:textSize="16dp" />
             </LinearLayout>

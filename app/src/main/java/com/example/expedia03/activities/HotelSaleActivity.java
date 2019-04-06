@@ -1,22 +1,23 @@
-package com.example.expedia03;
+package com.example.expedia03.activities;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.NestedScrollView;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.expedia03.entities.HotelData;
+import com.example.expedia03.R;
+import com.example.expedia03.adapter.HotelSaleRVAdapter;
+
 import java.util.ArrayList;
 
-public class HotelSaleActivity extends AppCompatActivity {
+public class HotelSaleActivity extends BaseActivity {
     static final int HOTELSALE_UNDER80000 = 15;
     static final int HOTELSALE_DAILY = 16;
     static final int HOTELSALE_DEADLINE = 17;
@@ -51,7 +52,8 @@ public class HotelSaleActivity extends AppCompatActivity {
         });
     }
 
-    private void initApp(){
+    @Override
+    public void initApp(){
         //Page Mode Set 80,000원이하특가/일일특가/마감특가
         closeBtn = findViewById(R.id.hotelsale_close_btn);
         pageNameTv = findViewById(R.id.hotelsale_pagename_tv);
@@ -75,7 +77,7 @@ public class HotelSaleActivity extends AppCompatActivity {
 
         mRecyclerView = findViewById(R.id.hotelsale_recyclerview);
         dataList = new ArrayList<>();
-        RVAdapter rvAdapter = new RVAdapter(dataList);
+        HotelSaleRVAdapter rvAdapter = new HotelSaleRVAdapter(dataList);
 
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setHasFixedSize(true);

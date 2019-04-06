@@ -1,4 +1,4 @@
-package com.example.expedia03;
+package com.example.expedia03.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -6,18 +6,18 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
-import com.makeramen.roundedimageview.RoundedImageView;
+import com.example.expedia03.MyViewHolder;
+import com.example.expedia03.entities.HotelData;
+import com.example.expedia03.R;
 
 import java.util.ArrayList;
 
-public class RVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class HotelSaleRVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private ArrayList<HotelData> dataList;
     Context mContext;
 
-    RVAdapter(ArrayList<HotelData> dataList){
+    public HotelSaleRVAdapter(ArrayList<HotelData> dataList){
         this.dataList = dataList;
     }
 
@@ -25,8 +25,7 @@ public class RVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
         mContext = parent.getContext();
-        View view = LayoutInflater.from(mContext).inflate(R.layout.recyclerview_item, parent, false);
-
+        View view = LayoutInflater.from(mContext).inflate(R.layout.hotelsale_rv_item, parent, false);
         return new MyViewHolder(view);
     }
 
@@ -34,12 +33,12 @@ public class RVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int pos) {
         MyViewHolder myViewHolder = (MyViewHolder)viewHolder;
 
-        Glide.with(mContext).load(dataList.get(pos).hotelImgRes).into(myViewHolder.hotelIv);
-        myViewHolder.discountedRateTv.setText("-"+dataList.get(pos).discountedRate+"%");
-        myViewHolder.hotelNameTv.setText(dataList.get(pos).hotelName);
-        myViewHolder.cityNameTv.setText(dataList.get(pos).cityName);
-        myViewHolder.scheduleTv.setText(dataList.get(pos).schedule);
-        myViewHolder.hotelPriceTv.setText("￦"+dataList.get(pos).hotelPrice);
+        Glide.with(mContext).load(dataList.get(pos).getHotelImgRes()).into(myViewHolder.hotelIv);
+        myViewHolder.discountedRateTv.setText("-"+dataList.get(pos).getDiscountedRate()+"%");
+        myViewHolder.hotelNameTv.setText(dataList.get(pos).getHotelName());
+        myViewHolder.cityNameTv.setText(dataList.get(pos).getCityName());
+        myViewHolder.scheduleTv.setText(dataList.get(pos).getSchedule());
+        myViewHolder.hotelPriceTv.setText("￦"+dataList.get(pos).getHotelPrice());
     }
 
     @Override
@@ -47,7 +46,7 @@ public class RVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         return dataList.size();
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder{
+/*    public static class MyViewHolder extends RecyclerView.ViewHolder{
         RoundedImageView hotelIv;
         TextView hotelNameTv, cityNameTv, scheduleTv, hotelPriceTv, discountedRateTv;
 
@@ -61,5 +60,5 @@ public class RVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             discountedRateTv = view.findViewById(R.id.recyclerview_item_discountedrate);
         }
 
-    }
+    }*/
 }

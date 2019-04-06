@@ -1,8 +1,7 @@
-package com.example.expedia03;
+package com.example.expedia03.activities;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,7 +10,9 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class SignupActivity extends AppCompatActivity {
+import com.example.expedia03.R;
+
+public class SignupActivity extends BaseActivity {
     TabLayout tabLayout;
     ImageButton backBtn;
     EditText emailAddressEt, passwordEt;
@@ -27,8 +28,15 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
+    public void initApp(){
+        tabLayout = findViewById(R.id.signup_tablayout);
+        backBtn = findViewById(R.id.signup_back_btn);
+        //loginTabContent
+        emailAddressEt = findViewById(R.id.logintab_emailaddress_et);
+        passwordEt = findViewById(R.id.logintab_password_et);
+        loginBtn = findViewById(R.id.logintab_login_btn);
+        forgetPwdTv = findViewById(R.id.logintab_forget_pwd_tv);
+
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -46,27 +54,13 @@ public class SignupActivity extends AppCompatActivity {
 
             }
         });
-    }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-    }
-
-    private void initApp(){
-        tabLayout = findViewById(R.id.signup_tablayout);
-        backBtn = findViewById(R.id.signup_back_btn);
-        //loginTabContent
-        emailAddressEt = findViewById(R.id.logintab_emailaddress_et);
-        passwordEt = findViewById(R.id.logintab_password_et);
-        loginBtn = findViewById(R.id.logintab_login_btn);
-        forgetPwdTv = findViewById(R.id.logintab_forget_pwd_tv);
 
     }
 
@@ -84,6 +78,5 @@ public class SignupActivity extends AppCompatActivity {
                 joinTabContent.setVisibility(View.VISIBLE);
                 break;
         }
-
     }
 }

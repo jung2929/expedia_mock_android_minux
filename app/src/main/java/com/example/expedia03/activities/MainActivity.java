@@ -2,6 +2,7 @@ package com.example.expedia03.activities;
 
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -27,13 +28,12 @@ public class MainActivity extends BaseActivity {
 
     TabLayout tabLayout;
     TabLayout.Tab tab1, tab2, tab3;
+    NestedScrollView mScroll;
 
     LinearLayout bookingContent;
     LinearLayout bookingtab_signupView;
     TextView bookingtab_pointGuideView;
     Button bookingtab_signupBtn;
-    ImageView cardIv01, cardIv02, cardIv03, cardIv04;
-    CardView under80000Card, dailyCard, deadLineCard;
     RecyclerView mRecyclerView;
     RecyclerView.LayoutManager mLayoutManager;
     private ArrayList<HotelSaleData> dataList;
@@ -57,6 +57,32 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        if(isLogin){// Login
+            bookingtab_signupView.setVisibility(View.GONE);
+            bookingtab_pointGuideView.setVisibility(View.VISIBLE);
+
+            scheduletab_signupView.setVisibility(View.GONE);
+            scheduletab_schedulingView.setVisibility(View.VISIBLE);
+
+            accounttab_signupView.setVisibility(View.GONE);
+            accounttab_accountView.setVisibility(View.VISIBLE);
+            accounttab_logoutBtn.setVisibility(View.VISIBLE);
+        }else{//Logout
+            bookingtab_signupView.setVisibility(View.VISIBLE);
+            bookingtab_pointGuideView.setVisibility(View.GONE);
+
+            scheduletab_signupView.setVisibility(View.GONE);
+            scheduletab_schedulingView.setVisibility(View.VISIBLE);
+
+            accounttab_signupView.setVisibility(View.VISIBLE);
+            accounttab_accountView.setVisibility(View.GONE);
+            accounttab_logoutBtn.setVisibility(View.GONE);
+        }
+    }
+
+    @Override
     public void initApp(){
         tabLayout = findViewById(R.id.main_tablayout);
         tab1 = tabLayout.getTabAt(0);
@@ -68,6 +94,7 @@ public class MainActivity extends BaseActivity {
         tab2.setText("일정");
         tab3.setIcon(R.drawable.account_tab);
         tab3.setText("계정");
+        mScroll = findViewById(R.id.main_scroll);
 
         bookingContent = findViewById(R.id.main_booking_content);
         scheduleContent = findViewById(R.id.main_schedule_content);
@@ -82,9 +109,9 @@ public class MainActivity extends BaseActivity {
         mRecyclerView = findViewById(R.id.bookingtab_recyclerview);
         dataList = new ArrayList<>();
         //더미 데이터 SET
-        dataList.add(new HotelSaleData("￦80,000 이하 특가", "호텔이 1박에 ￦80,000 이하!", R.drawable.card1_img));
-        dataList.add(new HotelSaleData("일일 특가", "매일 일부 호텔을 40%이상 할인해 드려요.매일 밤 자정 특가 상품이 업데이트 됩니다.", R.drawable.card3_img));
-        dataList.add(new HotelSaleData("마감특가 상품", "훌쩍 떠나고 싶으세요? 마감 특가 상품을 확인해 보세요.", R.drawable.card4_img));
+        dataList.add(new HotelSaleData(HOTELSALE_UNDER80000,"￦80,000 이하 특가", "호텔이 1박에 ￦80,000 이하!", R.drawable.card1_img));
+        dataList.add(new HotelSaleData(HOTELSALE_DAILY,"일일 특가", "매일 일부 호텔을 40%이상 할인해 드려요.매일 밤 자정 특가 상품이 업데이트 됩니다.", R.drawable.card3_img));
+        dataList.add(new HotelSaleData(HOTELSALE_DEADLINE,"마감특가 상품", "훌쩍 떠나고 싶으세요? 마감 특가 상품을 확인해 보세요.", R.drawable.card4_img));
         BookingTabRVAdapter rvAdapter = new BookingTabRVAdapter(dataList);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setHasFixedSize(true);
@@ -142,27 +169,12 @@ public class MainActivity extends BaseActivity {
             }
         });
 
-        if(isLogin){// Login
-            bookingtab_signupView.setVisibility(View.GONE);
-            bookingtab_pointGuideView.setVisibility(View.VISIBLE);
-
-            scheduletab_signupView.setVisibility(View.GONE);
-            scheduletab_schedulingView.setVisibility(View.VISIBLE);
-
-            accounttab_signupView.setVisibility(View.GONE);
-            accounttab_accountView.setVisibility(View.VISIBLE);
-            accounttab_logoutBtn.setVisibility(View.VISIBLE);
-        }else{//Logout
-            bookingtab_signupView.setVisibility(View.VISIBLE);
-            bookingtab_pointGuideView.setVisibility(View.GONE);
-
-            scheduletab_signupView.setVisibility(View.GONE);
-            scheduletab_schedulingView.setVisibility(View.VISIBLE);
-
-            accounttab_signupView.setVisibility(View.VISIBLE);
-            accounttab_accountView.setVisibility(View.GONE);
-            accounttab_logoutBtn.setVisibility(View.GONE);
-        }
+        mScroll.post(new Runnable() {
+            @Override
+            public void run() {
+                mScroll.scrollTo(0,0);
+            }
+        });
     }
 
     private void changeTabContent(int pos){

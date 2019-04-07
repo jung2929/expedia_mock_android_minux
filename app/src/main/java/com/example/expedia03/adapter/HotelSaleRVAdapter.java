@@ -1,19 +1,25 @@
 package com.example.expedia03.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
 import com.bumptech.glide.Glide;
 import com.example.expedia03.MyViewHolder;
+import com.example.expedia03.OnRvItemListener;
+import com.example.expedia03.activities.HotelInfoActivity;
 import com.example.expedia03.entities.HotelData;
 import com.example.expedia03.R;
 
 import java.util.ArrayList;
 
-public class HotelSaleRVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class HotelSaleRVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
+        implements OnRvItemListener {
     private ArrayList<HotelData> dataList;
     Context mContext;
 
@@ -26,7 +32,7 @@ public class HotelSaleRVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
         mContext = parent.getContext();
         View view = LayoutInflater.from(mContext).inflate(R.layout.hotelsale_rv_item, parent, false);
-        return new MyViewHolder(view);
+        return new MyViewHolder(view, this);
     }
 
     @Override
@@ -38,12 +44,18 @@ public class HotelSaleRVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         myViewHolder.hotelNameTv.setText(dataList.get(pos).getHotelName());
         myViewHolder.cityNameTv.setText(dataList.get(pos).getCityName());
         myViewHolder.scheduleTv.setText(dataList.get(pos).getSchedule());
-        myViewHolder.hotelPriceTv.setText("￦"+dataList.get(pos).getHotelPrice());
+        myViewHolder.hotelPriceTv.setText("￦"+dataList.get(pos).getDiscountedPrice());
     }
 
     @Override
     public int getItemCount() {
         return dataList.size();
+    }
+
+    @Override
+    public void onRvItemClick(int pos) {
+        Intent hotelInfoIntent = new Intent(mContext, HotelInfoActivity.class);
+        mContext.startActivity(hotelInfoIntent);
     }
 
 /*    public static class MyViewHolder extends RecyclerView.ViewHolder{

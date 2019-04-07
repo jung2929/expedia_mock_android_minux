@@ -13,8 +13,15 @@ public class MyViewHolder extends RecyclerView.ViewHolder {
     public TextView hotelNameTv, cityNameTv, scheduleTv, hotelPriceTv, discountedRateTv;
     public RoundedImageView hotelIv;
 
-    public MyViewHolder(@NonNull View view) {
+    public OnRvItemListener mListener;
+
+    public MyViewHolder(@NonNull View view){
         super(view);
+    }
+
+    public MyViewHolder(@NonNull View view, OnRvItemListener onRvItemListener) {
+        super(view);
+        mListener = onRvItemListener;
         //Main - BookingTab - id signup
         try{
             ivCardImg = view.findViewById(R.id.bookingtab_rv_item_cardimg);
@@ -30,5 +37,12 @@ public class MyViewHolder extends RecyclerView.ViewHolder {
             hotelPriceTv = view.findViewById(R.id.hotelsale_rv_item_hotelprice);
             discountedRateTv = view.findViewById(R.id.hotelsale_rv_item_discountedrate);
         }catch(Exception e){}
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mListener.onRvItemClick(getAdapterPosition());
+            }
+        });
     }
 }

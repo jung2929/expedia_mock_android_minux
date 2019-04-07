@@ -1,15 +1,23 @@
 package com.example.expedia03.entities;
 
 public class HotelSaleData {
+    int saleType;
     private String saleTite, saleGuide;
     private int cardImg;
 
-    public HotelSaleData(String saleTite, String saleGuide, int cardImg) {
+    public HotelSaleData(int saleType, String saleTite, String saleGuide, int cardImg) {
+        this.saleType = saleType;
         this.saleTite = saleTite;
         this.saleGuide = saleGuide;
         this.cardImg = cardImg;
     }
+    public int getSaleType() {
+        return saleType;
+    }
 
+    public void setSaleType(int saleType) {
+        this.saleType = saleType;
+    }
     public String getSaleTite() {
         return saleTite;
     }

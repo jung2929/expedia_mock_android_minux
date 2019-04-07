@@ -19,6 +19,7 @@
         </activity>
         <activity android:name=".activities.SignupActivity"/>
         <activity android:name=".activities.HotelSaleActivity"/>
+        <activity android:name=".activities.HotelInfoActivity"/>
     </application>
 
 </manifest>

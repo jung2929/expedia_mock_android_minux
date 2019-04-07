@@ -1,40 +1,49 @@
 package com.example.expedia03.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.expedia03.MyViewHolder;
+import com.example.expedia03.OnRvItemListener;
 import com.example.expedia03.R;
+import com.example.expedia03.activities.HotelSaleActivity;
 import com.example.expedia03.entities.HotelData;
 import com.example.expedia03.entities.HotelSaleData;
 
 import java.util.ArrayList;
 
-public class BookingTabRVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class BookingTabRVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
+        implements OnRvItemListener {
+    static final int HOTELSALE_UNDER80000 = 15;
+    static final int HOTELSALE_DAILY = 16;
+    static final int HOTELSALE_DEADLINE = 17;
+
     private ArrayList<HotelSaleData> dataList;
+    View view;
     Context mContext;
 
-    public BookingTabRVAdapter(ArrayList<HotelSaleData> dataList){
+    public BookingTabRVAdapter(ArrayList<HotelSaleData> dataList) {
         this.dataList = dataList;
     }
 
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int pos) {
         mContext = parent.getContext();
-        View view = LayoutInflater.from(mContext).inflate(R.layout.bookingtab_rv_item, parent, false);
-        return new MyViewHolder(view);
+        view = LayoutInflater.from(mContext).inflate(R.layout.bookingtab_rv_item, parent, false);
+        return new MyViewHolder(view, this);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int pos) {
-        MyViewHolder myViewHolder = (MyViewHolder)viewHolder;
-
+        MyViewHolder myViewHolder = (MyViewHolder) viewHolder;
         Glide.with(mContext).load(dataList.get(pos).getCardImg()).into(myViewHolder.ivCardImg);
         myViewHolder.saleTitle.setText(dataList.get(pos).getSaleTite());
         myViewHolder.saleGuide.setText(dataList.get(pos).getSaleGuide());
@@ -45,19 +54,24 @@ public class BookingTabRVAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         return dataList.size();
     }
 
-/*    public static class MyViewHolder extends RecyclerView.ViewHolder{
-        RoundedImageView hotelIv;
-        TextView hotelNameTv, cityNameTv, scheduleTv, hotelPriceTv, discountedRateTv;
-
-        MyViewHolder(View view){
-            super(view);
-            hotelIv = view.findViewById(R.id.recyclerview_item_iv);
-            hotelNameTv = view.findViewById(R.id.recyclerview_item_hotelname);
-            cityNameTv = view.findViewById(R.id.recyclerview_item_cityname);
-            scheduleTv = view.findViewById(R.id.recyclerview_item_schedule);
-            hotelPriceTv = view.findViewById(R.id.recyclerview_item_hotelprice);
-            discountedRateTv = view.findViewById(R.id.recyclerview_item_discountedrate);
+    @Override
+    public void onRvItemClick(int pos) {
+        switch (dataList.get(pos).getSaleType()) {
+            case HOTELSALE_UNDER80000:
+                Intent under80000Intent = new Intent(mContext, HotelSaleActivity.class);
+                under80000Intent.putExtra("pageset", HOTELSALE_UNDER80000);
+                mContext.startActivity(under80000Intent);
+                break;
+            case HOTELSALE_DAILY:
+                Intent dailyIntent = new Intent(mContext, HotelSaleActivity.class);
+                dailyIntent.putExtra("pageset", HOTELSALE_DAILY);
+                mContext.startActivity(dailyIntent);
+                break;
+            case HOTELSALE_DEADLINE:
+                Intent deadLineIntent = new Intent(mContext, HotelSaleActivity.class);
+                deadLineIntent.putExtra("pageset", HOTELSALE_DEADLINE);
+                mContext.startActivity(deadLineIntent);
+                break;
         }
-
-    }*/
+    }
 }

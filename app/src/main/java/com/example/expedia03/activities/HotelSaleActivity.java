@@ -42,23 +42,14 @@ public class HotelSaleActivity extends BaseActivity {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        closeBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-    }
-
-    @Override
     public void initApp(){
         //Page Mode Set 80,000원이하특가/일일특가/마감특가
+        mScroll = findViewById(R.id.hotelsale_scroll);
         closeBtn = findViewById(R.id.hotelsale_close_btn);
         pageNameTv = findViewById(R.id.hotelsale_pagename_tv);
         Intent pageSetIntent = getIntent();
         pageSet = pageSetIntent.getIntExtra("pageset", 0);
+        System.out.println("PAGE: "+pageSet);
 
         under80000Guide = findViewById(R.id.hotelsale_under80000_guideview);
         dailyGuide = findViewById(R.id.hotelsale_daily_guideview);
@@ -66,11 +57,17 @@ public class HotelSaleActivity extends BaseActivity {
         switch(pageSet){
             case HOTELSALE_UNDER80000:
                 under80000Guide.setVisibility(View.VISIBLE);
+                dailyGuide.setVisibility(View.GONE);
+                pageNameTv.setVisibility(View.GONE);
                 break;
             case HOTELSALE_DAILY:
+                dailyGuide.setVisibility(View.GONE);
                 dailyGuide.setVisibility(View.VISIBLE);
+                pageNameTv.setVisibility(View.GONE);
                 break;
             case HOTELSALE_DEADLINE:
+                pageNameTv.setVisibility(View.GONE);
+                dailyGuide.setVisibility(View.GONE);
                 pageNameTv.setVisibility(View.VISIBLE);
                 break;
         }
@@ -89,5 +86,19 @@ public class HotelSaleActivity extends BaseActivity {
         dataList.add(new HotelData("서귀포 칼 호텔", "서귀포, 한국", "6월 7일(금) ~ 6월 8일 (토)", "68,182", "75", R.drawable.card2_img));
         dataList.add(new HotelData("NRC 레지던스 수완나품", "방콕, 태국", "4월 25일(목) ~ 4월 27일 (토)", "20,501", "75", R.drawable.card3_img));
         dataList.add(new HotelData("로열 라타나꼬신 호텔", "방콕, 태국", "4월 25일(목) ~ 4월 27일 (토)", "34,141", "75", R.drawable.card4_img));
+
+        closeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        mScroll.post(new Runnable() {
+            @Override
+            public void run() {
+                mScroll.scrollTo(0,0);
+            }
+        });
     }
 }

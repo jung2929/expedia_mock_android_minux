@@ -1,63 +1,76 @@
 package com.example.expedia03.entities;
 
-public class HotelData {
-    private String hotelName, cityName, schedule, hotelPrice, discountedRate;
-    private int hotelImgRes;
+import java.util.ArrayList;
 
-    public HotelData(String hotelName, String cityName, String schedule, String hotelPrice, String discountedRate, int hotelImgRes) {
+public class HotelData {
+    private String hotelName, cityName, schedule, discountedPrice, discountedRate, review, price;
+    private int hotelImgRes;
+    private int totalGrade, cleanGrade, comfortGrade, stateGrade;
+    ArrayList<String> serviceNmae;
+
+    public HotelData(String hotelName, String cityName, String schedule, String discountedPrice, String discountedRate, int hotelImgRes) {
         this.hotelName = hotelName;
         this.cityName = cityName;
         this.schedule = schedule;
-        this.hotelPrice = hotelPrice;
+        this.discountedPrice = discountedPrice;
         this.discountedRate = discountedRate;
         this.hotelImgRes = hotelImgRes;
+    }
+
+    public ArrayList<String> getServiceNmae() {
+        return serviceNmae;
+    }
+
+    public void setServiceNmae(ArrayList<String> serviceNmae){
+        this.serviceNmae = serviceNmae;
     }
 
     public String getHotelName() {
         return hotelName;
     }
 
-    public void setHotelName(String hotelName) {
-        this.hotelName = hotelName;
-    }
-
     public String getCityName() {
         return cityName;
-    }
-
-    public void setCityName(String cityName) {
-        this.cityName = cityName;
     }
 
     public String getSchedule() {
         return schedule;
     }
 
-    public void setSchedule(String schedule) {
-        this.schedule = schedule;
+    public String getDiscountedPrice() {
+        return discountedPrice;
     }
 
-    public String getHotelPrice() {
-        return hotelPrice;
-    }
-
-    public void setHotelPrice(String hotelPrice) {
-        this.hotelPrice = hotelPrice;
-    }
 
     public String getDiscountedRate() {
         return discountedRate;
-    }
-
-    public void setDiscountedRate(String discountedRate) {
-        this.discountedRate = discountedRate;
     }
 
     public int getHotelImgRes() {
         return hotelImgRes;
     }
 
-    public void setHotelImgRes(int hotelImgRes) {
-        this.hotelImgRes = hotelImgRes;
+    public String getReview() {
+        return review;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public int getTotalGrade() {
+        return totalGrade;
+    }
+
+    public int getCleanGrade() {
+        return cleanGrade;
+    }
+
+    public int getComfortGrade() {
+        return comfortGrade;
+    }
+
+    public int getStateGrade() {
+        return stateGrade;
     }
 }

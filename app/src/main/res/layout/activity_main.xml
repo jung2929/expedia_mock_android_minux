@@ -8,6 +8,7 @@
     tools:context=".activities.MainActivity">
 
     <android.support.v4.widget.NestedScrollView
+        android:id="@+id/main_scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/main_tablayout"
@@ -197,7 +198,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:background="@drawable/bottomline_border"
+                    android:background="@drawable/all_line_border"
                     android:gravity="center_vertical"
                     android:paddingLeft="15dp"
                     android:text="일정"
@@ -326,7 +327,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:background="@drawable/bottomline_border"
+                    android:background="@drawable/all_line_border"
                     android:gravity="center_vertical"
                     android:paddingLeft="15dp"
                     android:text="계정"

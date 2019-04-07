@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/hotelinfo_frag_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/hotelinfo_frag_iv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"/>
+
+    <!--<ImageButton-->
+        <!--android:id="@+id/hotelinfo_frag_ib"-->
+        <!--android:layout_width="50dp"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:layout_gravity="bottom|end"-->
+        <!--android:background="@android:color/transparent"-->
+        <!--tools:src="@android:drawable/ic_dialog_dialer" />-->
+
+</FrameLayout>

@@ -1,5 +1,4 @@
 package com.example.expedia03.activities;
-
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.view.View;
@@ -11,13 +10,19 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.expedia03.R;
+import com.example.expedia03.SignUpTask;
 
 public class SignupActivity extends BaseActivity {
     TabLayout tabLayout;
     ImageButton backBtn;
-    EditText emailAddressEt, passwordEt;
+
+    EditText logintab_etEmail, logintab_etPwd;
     Button loginBtn;
     TextView forgetPwdTv;
+
+    EditText jointab_etEmail, jointab_etPwd, userFirstName, userLastName;
+    Button joinBtn;
+
 
 
     @Override
@@ -32,10 +37,16 @@ public class SignupActivity extends BaseActivity {
         tabLayout = findViewById(R.id.signup_tablayout);
         backBtn = findViewById(R.id.signup_back_btn);
         //loginTabContent
-        emailAddressEt = findViewById(R.id.logintab_emailaddress_et);
-        passwordEt = findViewById(R.id.logintab_password_et);
+        logintab_etEmail = findViewById(R.id.logintab_emailaddress_et);
+        logintab_etPwd = findViewById(R.id.logintab_password_et);
         loginBtn = findViewById(R.id.logintab_login_btn);
         forgetPwdTv = findViewById(R.id.logintab_forget_pwd_tv);
+        //joinTabContent
+        jointab_etEmail = findViewById(R.id.jointab_emailaddress_et);
+        jointab_etPwd = findViewById(R.id.jointab_password_et);
+        userFirstName = findViewById(R.id.jointab_firstname_et);
+        userLastName = findViewById(R.id.jointab_lastname_et);
+        joinBtn = findViewById(R.id.jointab_join_btn);
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -55,6 +66,27 @@ public class SignupActivity extends BaseActivity {
             }
         });
 
+        loginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String email = logintab_etEmail.getText().toString();
+                String pwd = logintab_etPwd.getText().toString();
+                SignUpTask signupTask = new SignUpTask(SignupActivity.this);
+                signupTask.execute("login", email, pwd);
+            }
+        });
+
+        joinBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String email = jointab_etEmail.getText().toString();
+                String pwd = jointab_etPwd.getText().toString();
+                String userName = userFirstName.getText().toString()+" "+userLastName.getText().toString();
+                SignUpTask signUpTask = new SignUpTask(SignupActivity.this);
+                signUpTask.execute("user", email, pwd, userName);
+            }
+        });
+
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,12 +103,14 @@ public class SignupActivity extends BaseActivity {
         switch (pos){
             case 0:
                 loginTabContent.setVisibility(View.VISIBLE);
-                joinTabContent.setVisibility(View.INVISIBLE);
+                joinTabContent.setVisibility(View.GONE);
                 break;
             case 1:
-                loginTabContent.setVisibility(View.INVISIBLE);
+                loginTabContent.setVisibility(View.GONE);
                 joinTabContent.setVisibility(View.VISIBLE);
                 break;
         }
     }
+
+
 }

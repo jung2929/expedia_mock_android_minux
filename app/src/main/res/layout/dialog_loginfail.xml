@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="180dp"
+    android:padding="15dp"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/round_all_border">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="로그인에 실패하였습니다."
+            android:textColor="#000"
+            android:textSize="22dp"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="이메일 주소와 비밀번호를 확인하고 다시 시도해주세요."
+            android:textColor="#000"
+            android:textSize="20dp"
+            android:layout_marginBottom="10dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/loginfail_yes_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="확인"
+                android:layout_gravity="bottom|right"
+                android:textColor="@color/colorBtnBlue"
+                android:textSize="17dp" />
+        </LinearLayout>
+</LinearLayout>

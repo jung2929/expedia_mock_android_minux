@@ -1,4 +1,6 @@
 package com.example.expedia03.activities;
+
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.view.View;
@@ -11,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.expedia03.R;
 import com.example.expedia03.SignUpTask;
+import com.example.expedia03.entities.SignUpData;
 
 public class SignupActivity extends BaseActivity {
     TabLayout tabLayout;
@@ -23,7 +26,7 @@ public class SignupActivity extends BaseActivity {
     EditText jointab_etEmail, jointab_etPwd, userFirstName, userLastName;
     Button joinBtn;
 
-
+    SignUpData account;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,31 +51,30 @@ public class SignupActivity extends BaseActivity {
         userLastName = findViewById(R.id.jointab_lastname_et);
         joinBtn = findViewById(R.id.jointab_join_btn);
 
+        account = new SignUpData();
+
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 int pos = tab.getPosition();
                 changeTabContent(pos);
             }
-
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
 
             }
-
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
 
             }
         });
-
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String email = logintab_etEmail.getText().toString();
                 String pwd = logintab_etPwd.getText().toString();
-                SignUpTask signupTask = new SignUpTask(SignupActivity.this);
-                signupTask.execute("login", email, pwd);
+                SignUpTask loginTask = new SignUpTask(SignupActivity.this, account);
+                loginTask.execute("login", email, pwd, null);
             }
         });
 
@@ -82,8 +84,8 @@ public class SignupActivity extends BaseActivity {
                 String email = jointab_etEmail.getText().toString();
                 String pwd = jointab_etPwd.getText().toString();
                 String userName = userFirstName.getText().toString()+" "+userLastName.getText().toString();
-                SignUpTask signUpTask = new SignUpTask(SignupActivity.this);
-                signUpTask.execute("user", email, pwd, userName);
+                SignUpTask joinTask = new SignUpTask(SignupActivity.this, account);
+                joinTask.execute("user", email, pwd, userName);
             }
         });
 
@@ -93,13 +95,11 @@ public class SignupActivity extends BaseActivity {
                 finish();
             }
         });
-
     }
 
-    private void changeTabContent(int pos){
+    public void changeTabContent(int pos){
         LinearLayout loginTabContent = findViewById(R.id.signup_login_tab);
         RelativeLayout joinTabContent = findViewById(R.id.signup_join_tab);
-
         switch (pos){
             case 0:
                 loginTabContent.setVisibility(View.VISIBLE);
@@ -109,8 +109,7 @@ public class SignupActivity extends BaseActivity {
                 loginTabContent.setVisibility(View.GONE);
                 joinTabContent.setVisibility(View.VISIBLE);
                 break;
+
         }
     }
-
-
 }

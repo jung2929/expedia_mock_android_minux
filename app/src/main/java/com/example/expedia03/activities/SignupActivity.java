@@ -12,8 +12,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.expedia03.R;
-import com.example.expedia03.SignUpTask;
 import com.example.expedia03.entities.SignUpData;
+import com.example.expedia03.loadTask.SignUpTask;
 
 public class SignupActivity extends BaseActivity {
     private TabLayout tabLayout;
@@ -128,6 +128,7 @@ public class SignupActivity extends BaseActivity {
     public void setAccount(SignUpData account){
         this.account = account;
     }
+
     public void closeSignUpPage(){
         Intent resultIntent = new Intent(this, MainActivity.class);
         System.out.println("SignUpPage>>\nEmail: "+account.getEmail());

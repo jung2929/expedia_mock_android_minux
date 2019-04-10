@@ -125,12 +125,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 
             }
         });
-
+        //각 탭의 SignUp 버튼 리스너 등록
         bookingtab_signupBtn.setOnClickListener(this);
         scheduletab_signupBtn.setOnClickListener(this);
         accounttab_signupBtn.setOnClickListener(this);
         accounttab_logoutBtn.setOnClickListener(this);
-
 
         mScroll.post(new Runnable() {
             @Override
@@ -171,15 +170,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                 break;
             case R.id.accounttab_logout_btn:
                 loginProcess(false);
-                bookingtab_signupView.setVisibility(View.VISIBLE);
-                bookingtab_pointGuideView.setVisibility(View.GONE);
-
-                scheduletab_signupView.setVisibility(View.GONE);
-                scheduletab_schedulingView.setVisibility(View.VISIBLE);
-
-                accounttab_signupView.setVisibility(View.VISIBLE);
-                accounttab_accountView.setVisibility(View.GONE);
-                accounttab_logoutBtn.setVisibility(View.GONE);
                 break;
         }
     }
@@ -208,7 +198,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
             scheduletab_signupView.setVisibility(View.GONE);
             scheduletab_schedulingView.setVisibility(View.VISIBLE);
 
-            //accounttab_tvName.setText(account.getName());
+            accounttab_tvName.setText(account.getName());
             accounttab_tvEmail.setText(account.getName());
             accounttab_signupView.setVisibility(View.GONE);
             accounttab_accountView.setVisibility(View.VISIBLE);

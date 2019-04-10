@@ -1,4 +1,4 @@
-package com.example.expedia03;
+package com.example.expedia03.loadTask;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -12,7 +12,6 @@ import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.json.JSONTokener;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -57,7 +56,9 @@ public class SignUpTask extends AsyncTask<String, Void, String> {
                 account = gson.fromJson(jarray.getString(0), SignUpData.class);
                 account.setToken(jsonToken.optString("jwt"));
 
-                System.out.println("TaskProcess>>\nEmail: " + account.getName());
+                System.out.println("TaskProcess>>\nEmail: " + account.getEmail());
+                System.out.println("Name: " + account.getName());
+                System.out.println("Pw: " + account.getName());
                 System.out.println("Token: " + account.getToken());
                 dialog.dismiss();
                 ((SignupActivity)mContext).setAccount(account);
@@ -77,12 +78,9 @@ public class SignUpTask extends AsyncTask<String, Void, String> {
                 } else {//회원가입 성공
                     JSONArray jarray = jsonObj.getJSONArray("result");
                     account = gson.fromJson(jarray.getString(0), SignUpData.class);
-                    SignUpTask loginTask = new SignUpTask(mContext);
+                    SignUpTask loginTask = new SignUpTask(mContext);//회원가입 후 바로 로그인실행
                     loginTask.execute("login", account.getEmail(), account.getPw(), null);
                     dialog.dismiss();
-                /*System.out.println("Email: "+ account.getEmail());
-                System.out.println("Pw: "+ account.getPw());
-                System.out.println("Name: "+ account.getName());*/
                 }
             } catch (Exception joinError) {
                 System.out.println(joinError);

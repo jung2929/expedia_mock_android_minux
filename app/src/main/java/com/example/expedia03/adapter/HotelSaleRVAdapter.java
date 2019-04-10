@@ -39,12 +39,12 @@ public class HotelSaleRVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int pos) {
         MyViewHolder myViewHolder = (MyViewHolder)viewHolder;
 
-        Glide.with(mContext).load(dataList.get(pos).getHotelImgRes()).into(myViewHolder.hotelIv);
-        myViewHolder.discountedRateTv.setText("-"+dataList.get(pos).getDiscountedRate()+"%");
-        myViewHolder.hotelNameTv.setText(dataList.get(pos).getHotelName());
-        myViewHolder.cityNameTv.setText(dataList.get(pos).getCityName());
-        myViewHolder.scheduleTv.setText(dataList.get(pos).getSchedule());
-        myViewHolder.hotelPriceTv.setText("￦"+dataList.get(pos).getDiscountedPrice());
+        Glide.with(mContext).load(dataList.get(pos).getImage().getImgRes()).into(myViewHolder.hotelIv);
+        myViewHolder.discountedRateTv.setText("-"+dataList.get(pos).getPercentage()+"%");
+        myViewHolder.hotelNameTv.setText(dataList.get(pos).getName());
+        myViewHolder.cityNameTv.setText(dataList.get(pos).getShortL());
+        myViewHolder.scheduleTv.setText(dataList.get(pos).getSdate()+" ~ "+dataList.get(pos).getEdate());
+        myViewHolder.hotelPriceTv.setText("￦"+dataList.get(pos).getPriced());
     }
 
     @Override

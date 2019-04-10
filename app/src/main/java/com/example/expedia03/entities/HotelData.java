@@ -3,74 +3,53 @@ package com.example.expedia03.entities;
 import java.util.ArrayList;
 
 public class HotelData {
-    private String hotelName, cityName, schedule, discountedPrice, discountedRate, review, price;
-    private int hotelImgRes;
+    private String Name, ShortL, Sdate, Edate , Priced, Percentage,review, price;
+    private int dumiImgRes;
+    private HotelImageData Image;
     private int totalGrade, cleanGrade, comfortGrade, stateGrade;
     ArrayList<String> serviceNmae;
 
-    public HotelData(String hotelName, String cityName, String schedule, String discountedPrice, String discountedRate, int hotelImgRes) {
-        this.hotelName = hotelName;
-        this.cityName = cityName;
-        this.schedule = schedule;
-        this.discountedPrice = discountedPrice;
-        this.discountedRate = discountedRate;
-        this.hotelImgRes = hotelImgRes;
+    public HotelData(String name, String shortL, String sdate, String edate, String priced, String percentage,int imgRes) {
+        Name = name;
+        ShortL = shortL;
+        Sdate = sdate;
+        Edate = edate;
+        Priced = priced;
+        Percentage = percentage;
+        dumiImgRes = imgRes;
+
     }
 
-    public ArrayList<String> getServiceNmae() {
-        return serviceNmae;
+    public HotelImageData getImage() {
+        return Image;
     }
 
-    public void setServiceNmae(ArrayList<String> serviceNmae){
-        this.serviceNmae = serviceNmae;
+    public String getName() {
+        return Name;
     }
 
-    public String getHotelName() {
-        return hotelName;
-    }
-
-    public String getCityName() {
-        return cityName;
-    }
-
-    public String getSchedule() {
-        return schedule;
-    }
-
-    public String getDiscountedPrice() {
-        return discountedPrice;
+    public String getShortL() {
+        return ShortL;
     }
 
 
-    public String getDiscountedRate() {
-        return discountedRate;
+    public String getSdate() {
+        return Sdate;
     }
 
-    public int getHotelImgRes() {
-        return hotelImgRes;
+    public String getEdate() {
+        return Edate;
     }
 
-    public String getReview() {
-        return review;
+    public String getPriced() {
+        return Priced;
     }
 
-    public String getPrice() {
-        return price;
+    public String getPercentage() {
+        return Percentage;
     }
 
-    public int getTotalGrade() {
-        return totalGrade;
-    }
-
-    public int getCleanGrade() {
-        return cleanGrade;
-    }
-
-    public int getComfortGrade() {
-        return comfortGrade;
-    }
-
-    public int getStateGrade() {
-        return stateGrade;
+    public int getDumiImgRes() {
+        return dumiImgRes;
     }
 }

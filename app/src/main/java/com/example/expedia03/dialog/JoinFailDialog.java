@@ -40,7 +40,7 @@ public class JoinFailDialog extends Dialog implements View.OnClickListener{
         switch (v.getId()){
             case R.id.joinfail_existingaccount_login_tv:
                 dismiss();
-                ((SignupActivity)mContext).changeTabContent(0);
+                ((SignupActivity)mContext).setTab(0);
                 break;
             case R.id.joinfail_differentemail_join_tv:
                 dismiss();

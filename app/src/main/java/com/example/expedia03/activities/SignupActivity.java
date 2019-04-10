@@ -1,6 +1,6 @@
 package com.example.expedia03.activities;
 
-import android.os.AsyncTask;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.view.View;
@@ -16,17 +16,18 @@ import com.example.expedia03.SignUpTask;
 import com.example.expedia03.entities.SignUpData;
 
 public class SignupActivity extends BaseActivity {
-    TabLayout tabLayout;
-    ImageButton backBtn;
+    private TabLayout tabLayout;
+    private TabLayout.Tab loginTab, joinTab;
+    private ImageButton backBtn;
 
-    EditText logintab_etEmail, logintab_etPwd;
-    Button loginBtn;
-    TextView forgetPwdTv;
+    private EditText logintab_etEmail, logintab_etPwd;
+    private Button loginBtn;
+    private TextView forgetPwdTv;
 
-    EditText jointab_etEmail, jointab_etPwd, userFirstName, userLastName;
-    Button joinBtn;
+    private EditText jointab_etEmail, jointab_etPwd, userFirstName, userLastName;
+    private Button joinBtn;
 
-    SignUpData account;
+    private SignUpData account;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,8 @@ public class SignupActivity extends BaseActivity {
     @Override
     public void initApp(){
         tabLayout = findViewById(R.id.signup_tablayout);
+        loginTab = tabLayout.getTabAt(0);
+        joinTab = tabLayout.getTabAt(1);
         backBtn = findViewById(R.id.signup_back_btn);
         //loginTabContent
         logintab_etEmail = findViewById(R.id.logintab_emailaddress_et);
@@ -73,22 +76,20 @@ public class SignupActivity extends BaseActivity {
             public void onClick(View v) {
                 String email = logintab_etEmail.getText().toString();
                 String pwd = logintab_etPwd.getText().toString();
-                SignUpTask loginTask = new SignUpTask(SignupActivity.this, account);
+                SignUpTask loginTask = new SignUpTask(SignupActivity.this);
                 loginTask.execute("login", email, pwd, null);
             }
         });
-
         joinBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String email = jointab_etEmail.getText().toString();
                 String pwd = jointab_etPwd.getText().toString();
                 String userName = userFirstName.getText().toString()+" "+userLastName.getText().toString();
-                SignUpTask joinTask = new SignUpTask(SignupActivity.this, account);
+                SignUpTask joinTask = new SignUpTask(SignupActivity.this);
                 joinTask.execute("user", email, pwd, userName);
             }
         });
-
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,8 +99,8 @@ public class SignupActivity extends BaseActivity {
     }
 
     public void changeTabContent(int pos){
-        LinearLayout loginTabContent = findViewById(R.id.signup_login_tab);
-        RelativeLayout joinTabContent = findViewById(R.id.signup_join_tab);
+        LinearLayout loginTabContent = findViewById(R.id.signup_logintab_container);
+        RelativeLayout joinTabContent = findViewById(R.id.signup_jointab_container);
         switch (pos){
             case 0:
                 loginTabContent.setVisibility(View.VISIBLE);
@@ -109,7 +110,32 @@ public class SignupActivity extends BaseActivity {
                 loginTabContent.setVisibility(View.GONE);
                 joinTabContent.setVisibility(View.VISIBLE);
                 break;
-
         }
+    }
+
+    public void setTab(int pos){
+        switch (pos){
+            case 0:
+                loginTab.select();
+                changeTabContent(pos);
+                break;
+            case 1:
+                joinTab.select();
+                changeTabContent(pos);
+        }
+    }
+
+    public void setAccount(SignUpData account){
+        this.account = account;
+    }
+    public void closeSignUpPage(){
+        Intent resultIntent = new Intent(this, MainActivity.class);
+        System.out.println("SignUpPage>>\nEmail: "+account.getEmail());
+        System.out.println("Pw: "+account.getPw());
+        System.out.println("Name: "+account.getName());
+        System.out.println("Token: "+account.getToken());
+        resultIntent.putExtra("accountObj", account);
+        setResult(RESULT_OK, resultIntent);
+        finish();
     }
 }

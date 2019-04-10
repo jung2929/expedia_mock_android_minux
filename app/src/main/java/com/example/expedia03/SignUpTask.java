@@ -26,9 +26,8 @@ public class SignUpTask extends AsyncTask<String, Void, String> {
     ProgressDialog dialog;
     static final int CON_TIMEOUT = 20;
 
-    public SignUpTask(Context mContext, SignUpData account) {
+    public SignUpTask(Context mContext) {
         this.mContext = mContext;
-        this.account = account;
     }
 
     @Override
@@ -46,6 +45,7 @@ public class SignUpTask extends AsyncTask<String, Void, String> {
 
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
+        System.out.println("RESULT: "+s);
         try {//로그인 처리
             if(!s.equals("")) {//로그인 성공
                 System.out.println("<로그인---");
@@ -57,8 +57,11 @@ public class SignUpTask extends AsyncTask<String, Void, String> {
                 account = gson.fromJson(jarray.getString(0), SignUpData.class);
                 account.setToken(jsonToken.optString("jwt"));
 
-                System.out.println("Email: " + account.getName());
+                System.out.println("TaskProcess>>\nEmail: " + account.getName());
                 System.out.println("Token: " + account.getToken());
+                dialog.dismiss();
+                ((SignupActivity)mContext).setAccount(account);
+                ((SignupActivity)mContext).closeSignUpPage();
             }else{//로그인 실패
                 LoginFailDialog loginDialog = new LoginFailDialog(mContext);
                 loginDialog.show();
@@ -68,24 +71,22 @@ public class SignUpTask extends AsyncTask<String, Void, String> {
                 System.out.println("<회원가입---");
                 Gson gson = new Gson();
                 JSONObject jsonObj = new JSONObject(s);
-                if(jsonObj.optInt("code", 0) == 502) {
+                if (jsonObj.optInt("code", 0) == 502) {//회원가입 실패
                     JoinFailDialog joinDialog = new JoinFailDialog(mContext);
                     joinDialog.show();
-                }else {
+                } else {//회원가입 성공
                     JSONArray jarray = jsonObj.getJSONArray("result");
                     account = gson.fromJson(jarray.getString(0), SignUpData.class);
-                    SignUpTask loginTask = new SignUpTask(mContext, account);
+                    SignUpTask loginTask = new SignUpTask(mContext);
                     loginTask.execute("login", account.getEmail(), account.getPw(), null);
+                    dialog.dismiss();
                 /*System.out.println("Email: "+ account.getEmail());
                 System.out.println("Pw: "+ account.getPw());
                 System.out.println("Name: "+ account.getName());*/
                 }
-            }catch (Exception joinError){
+            } catch (Exception joinError) {
                 System.out.println(joinError);
             }
-        }finally {
-            dialog.dismiss();
-            System.out.println("RESULT: "+s);
         }
     }
 

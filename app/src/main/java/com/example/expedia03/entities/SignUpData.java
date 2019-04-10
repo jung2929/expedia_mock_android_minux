@@ -1,6 +1,8 @@
 package com.example.expedia03.entities;
 
-public class SignUpData {
+import java.io.Serializable;
+
+public class SignUpData implements Serializable {
     private String Email, Name;
     private String Pw;
     private String token;

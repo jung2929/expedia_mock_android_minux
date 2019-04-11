@@ -40,7 +40,8 @@
         android:id="@+id/hotelinfo_frgment_scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/hotelinfo_haed">
+        android:layout_below="@+id/hotelinfo_haed"
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -356,6 +357,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp">
             </android.support.v7.widget.RecyclerView>
+
+            <TextView
+                android:id="@+id/hotelinfo_locationguide_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:text="AAA"
+                android:textColor="@color/colorAppTheme"
+                android:padding="15dp"/>
+
+            <fragment
+                android:id="@+id/hotelinfo_map"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                class="com.google.android.gms.maps.MapFragment"/>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 </RelativeLayout>

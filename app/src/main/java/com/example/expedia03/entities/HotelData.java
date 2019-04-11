@@ -4,11 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class HotelData implements Serializable {
-    private String Name, ShortL, Sdate, Edate , Priced, Percentage,review, price;
+    private String Name, ShortL, Sdate, Edate , Priced, Percentage, Image, review, price;
     private int dumiImgRes;
-
-
-    private HotelImageData Image;
     private int[] roomImgs;
     private int totalGrade, cleanGrade, comfortGrade, stateGrade;
     ArrayList<String> serviceName;
@@ -21,10 +18,9 @@ public class HotelData implements Serializable {
         Priced = priced;
         Percentage = percentage;
         dumiImgRes = imgRes;
-
     }
 
-    public HotelImageData getImage() {
+    public String getImage() {
         return Image;
     }
 

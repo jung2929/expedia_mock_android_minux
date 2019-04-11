@@ -52,20 +52,16 @@ public class HotelSaleTask extends AsyncTask<String, Void, String> {
         super.onPostExecute(s);
         System.out.println("RESULT: "+s);
         try {
+            System.out.println("HotelSaleTask>>Try - catch");
             JSONArray jarray = new JSONObject(s).getJSONArray("result");
             Gson gson = new Gson();
             HotelData hotelData;
-            for(int i = 0; i < jarray.length(); i++){
-                hotelData = gson.fromJson(jarray.getString(i), HotelData.class);
-                hotelData.getImage().setImgRes(dumiImg[i]);//
-                ((HotelSaleActivity)mContext).addData(hotelData);
-                //이미지 없어서 일단 이렇게 이미지데이터추가되면 아래 한줄로 끝
-                //((HotelSaleActivity)mContext).addData(gson.fromJson(jarray.getString(i), HotelData.class))
-            }
-            ((HotelSaleActivity)mContext).notifyDataChanged();
+            for(int i = 0; i < jarray.length(); i++)
+                ((HotelSaleActivity)mContext).addData(gson.fromJson(jarray.getString(i), HotelData.class));
             dialog.dismiss();
+            ((HotelSaleActivity)mContext).notifyDataChanged();
         } catch (Exception e) {
-
+            System.out.println(e);
         }
     }
 

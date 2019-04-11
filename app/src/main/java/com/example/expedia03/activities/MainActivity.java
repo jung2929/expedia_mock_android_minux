@@ -4,23 +4,17 @@ import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.widget.NestedScrollView;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import com.bumptech.glide.Glide;
 import com.example.expedia03.R;
 import com.example.expedia03.adapter.BookingTabRVAdapter;
 import com.example.expedia03.entities.HotelSaleData;
 import com.example.expedia03.entities.SignUpData;
-
 import java.util.ArrayList;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener{
@@ -30,7 +24,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     static final int SIGNUP_REQUEST = 1;
 
     private TabLayout tabLayout;
-    private TabLayout.Tab tab1, tab2, tab3;
     private NestedScrollView mScroll;
 
     private LinearLayout bookingContent;
@@ -64,9 +57,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     @Override
     public void initApp(){
         tabLayout = findViewById(R.id.main_tablayout);
-        tab1 = tabLayout.getTabAt(0);
-        tab2 = tabLayout.getTabAt(1);
-        tab3 = tabLayout.getTabAt(2);
         mScroll = findViewById(R.id.main_scroll);
 
         bookingContent = findViewById(R.id.main_booking_content);

@@ -7,14 +7,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.expedia03.MyViewHolder;
 import com.example.expedia03.OnRvItemListener;
 import com.example.expedia03.R;
 import com.example.expedia03.activities.HotelSaleActivity;
-import com.example.expedia03.entities.HotelData;
 import com.example.expedia03.entities.HotelSaleData;
 
 import java.util.ArrayList;
@@ -26,7 +24,6 @@ public class BookingTabRVAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     static final int HOTELSALE_DEADLINE = 17;
 
     private ArrayList<HotelSaleData> dataList;
-    View view;
     Context mContext;
 
     public BookingTabRVAdapter(ArrayList<HotelSaleData> dataList) {
@@ -37,7 +34,7 @@ public class BookingTabRVAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int pos) {
         mContext = parent.getContext();
-        view = LayoutInflater.from(mContext).inflate(R.layout.bookingtab_rv_item, parent, false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.bookingtab_rv_item, parent, false);
         return new MyViewHolder(view, this);
     }
 

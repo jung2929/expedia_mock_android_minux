@@ -7,7 +7,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.expedia03.MyViewHolder;
@@ -39,7 +38,7 @@ public class HotelSaleRVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int pos) {
         MyViewHolder myViewHolder = (MyViewHolder)viewHolder;
 
-        Glide.with(mContext).load(dataList.get(pos).getImage().getImgRes()).into(myViewHolder.hotelIv);
+        Glide.with(mContext).load(dataList.get(pos).getImage()).into(myViewHolder.hotelIv);
         myViewHolder.discountedRateTv.setText("-"+dataList.get(pos).getPercentage()+"%");
         myViewHolder.hotelNameTv.setText(dataList.get(pos).getName());
         myViewHolder.cityNameTv.setText(dataList.get(pos).getShortL());
@@ -59,20 +58,4 @@ public class HotelSaleRVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         hotelInfoIntent.putExtra("hotelData", data);
         mContext.startActivity(hotelInfoIntent);
     }
-
-/*    public static class MyViewHolder extends RecyclerView.ViewHolder{
-        RoundedImageView hotelIv;
-        TextView hotelNameTv, cityNameTv, scheduleTv, hotelPriceTv, discountedRateTv;
-
-        MyViewHolder(View view){
-            super(view);
-            hotelIv = view.findViewById(R.id.recyclerview_item_iv);
-            hotelNameTv = view.findViewById(R.id.recyclerview_item_hotelname);
-            cityNameTv = view.findViewById(R.id.recyclerview_item_cityname);
-            scheduleTv = view.findViewById(R.id.recyclerview_item_schedule);
-            hotelPriceTv = view.findViewById(R.id.recyclerview_item_hotelprice);
-            discountedRateTv = view.findViewById(R.id.recyclerview_item_discountedrate);
-        }
-
-    }*/
 }

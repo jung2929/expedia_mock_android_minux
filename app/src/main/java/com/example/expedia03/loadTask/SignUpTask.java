@@ -88,15 +88,15 @@ public class SignUpTask extends AsyncTask<String, Void, String> {
         }
     }
 
-    String loadManager(String type, String email, String pwd, String userName){
+    String loadManager(String urlType, String email, String pwd, String userName){
         try {
             SignUpData signUpJson = null;
-            if(type.equals("user")){
+            if(urlType.equals("user")){
                 signUpJson = new SignUpData(email, pwd, userName);
             }else{
                 signUpJson = new SignUpData(email, pwd);
             }
-            String urlStr = "http://www.kaca5.com/expedia/" + type;
+            String urlStr = "http://www.kaca5.com/expedia/" + urlType;
             URL signupURL = new URL(urlStr);
             HttpURLConnection con = (HttpURLConnection)signupURL.openConnection();
             con.setConnectTimeout(CON_TIMEOUT * 1000);

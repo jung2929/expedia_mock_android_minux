@@ -67,12 +67,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         tab1 = tabLayout.getTabAt(0);
         tab2 = tabLayout.getTabAt(1);
         tab3 = tabLayout.getTabAt(2);
-        tab1.setIcon(R.drawable.travel_booking_tab);
-        tab1.setText("여행예약");
-        tab2.setIcon(R.drawable.schedule_tab);
-        tab2.setText("일정");
-        tab3.setIcon(R.drawable.account_tab);
-        tab3.setText("계정");
         mScroll = findViewById(R.id.main_scroll);
 
         bookingContent = findViewById(R.id.main_booking_content);
@@ -87,7 +81,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         //BookingTab Rv Adapter Setting
         mRecyclerView = findViewById(R.id.bookingtab_recyclerview);
         dataList = new ArrayList<>();
-        //더미 데이터 SET
+        //더미 데이터 SET//세일이 n개여도 가능.일단 고정
         dataList.add(new HotelSaleData(HOTELSALE_UNDER80000,"￦80,000 이하 특가", "호텔이 1박에 ￦80,000 이하!", R.drawable.card1_img));
         dataList.add(new HotelSaleData(HOTELSALE_DAILY,"일일 특가", "매일 일부 호텔을 40%이상 할인해 드려요.매일 밤 자정 특가 상품이 업데이트 됩니다.", R.drawable.card3_img));
         dataList.add(new HotelSaleData(HOTELSALE_DEADLINE,"마감특가 상품", "훌쩍 떠나고 싶으세요? 마감 특가 상품을 확인해 보세요.", R.drawable.card4_img));

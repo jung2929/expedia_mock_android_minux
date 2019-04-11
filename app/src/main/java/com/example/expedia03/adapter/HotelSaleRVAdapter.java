@@ -54,7 +54,9 @@ public class HotelSaleRVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     @Override
     public void onRvItemClick(int pos) {
+        HotelData data = dataList.get(pos);
         Intent hotelInfoIntent = new Intent(mContext, HotelInfoActivity.class);
+        hotelInfoIntent.putExtra("hotelData", data);
         mContext.startActivity(hotelInfoIntent);
     }
 

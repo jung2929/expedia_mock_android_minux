@@ -792,16 +792,22 @@
         <android.support.design.widget.TabItem
             android:id="@+id/tarvel_booking_tab"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="여행 예약"
+            android:icon="@drawable/travel_booking_tab"/>
 
         <android.support.design.widget.TabItem
             android:id="@+id/schedule_tab"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="일정"
+            android:icon="@drawable/schedule_tab"/>
 
         <android.support.design.widget.TabItem
             android:id="@+id/account_tab"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="계정"
+            android:icon="@drawable/account_tab"/>
     </android.support.design.widget.TabLayout>
 </RelativeLayout>

@@ -1,6 +1,8 @@
 package com.example.expedia03.entities;
 
-public class HotelImageData {
+import java.io.Serializable;
+
+public class HotelImageData implements Serializable {
     private String HURL;
     private int dumiImgRes;
 
